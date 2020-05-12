@@ -1,0 +1,78 @@
+﻿@model VehicleTrackingSystem.DataObjects.Domain.LocationViewModel
+
+<form asp-action="CurrentLocation">
+    <h8>
+        Retrieve Current Position
+        @if (ViewBag.Status != null)
+        {
+            @ViewBag.Status
+        }
+    </h8>
+    <div class="row float-right">
+        <div class="form-group">
+            <input type="submit" name="answer" value="Submit" class="btn btn-secondary" />
+            <input type="submit" name="answer" value="Reset" class="btn btn-light" />
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.VehicleId" class="control-label"></label>
+                <select asp-for="@Model.VehicleId" asp-items="@(new SelectList(ViewBag.ListOfVehicles,"VehicleId","Name"))"></select>
+                <span asp-validation-for="@Model.VehicleId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="@Model.DateFrom" class="control-label"></label>
+                <input asp-for="@Model.DateFrom" class="form-control" />
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="@Model.DateTo" class="control-label"></label>
+                <input asp-for="@Model.DateTo" class="form-control" />
+
+            </div>
+        </div>
+    </div>
+
+    @if (ViewBag.ListOfLocations != null)
+    {
+        <div class='row table-cont' id='table-cont'>
+            <table class="table table-striped scores">
+                <thead>
+                    <tr>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Altitude</th>
+                        <th>HorizontalAccuracy</th>
+                        <th>VerticalAccuracy</th>
+                        <th>Speed</th>
+                        <th>Locality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var location in ViewBag.ListOfLocations)
+                    {
+                        <tr>
+                            <td>@location.Latitude</td>
+                            <td>@location.Longitude</td>
+                            <td>@location.Altitude</td>
+                            <td>@location.HorizontalAccuracy</td>
+                            <td>@location.VerticalAccuracy</td>
+                            <td>@location.Speed</td>
+                            <td>@location.Locality</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</form>
+
+

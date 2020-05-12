@@ -1,0 +1,39 @@
+﻿@model VehicleTrackingSystem.DataObjects.Domain.VehicleViewModel
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BodyType" class="control-label"></label>
+            <input asp-for="BodyType" class="form-control" />
+            <span asp-validation-for="BodyType" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="Maker" class="control-label"></label>
+            <input asp-for="Maker" class="form-control" />
+            <span asp-validation-for="Maker" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="Model" class="control-label"></label>
+            <input asp-for="Model" class="form-control" />
+            <span asp-validation-for="Model" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="Year" class="control-label"></label>
+            <input asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+        
+    </div>
+</div>
+
+

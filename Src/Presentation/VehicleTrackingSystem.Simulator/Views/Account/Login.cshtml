@@ -1,0 +1,114 @@
+﻿@model VehicleTrackingSystem.DataObjects.Domain.UserViewModel
+@{
+    Layout = "";
+}
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+<link href="~/css/Login.css" rel="stylesheet" />
+<form asp-action="Login">
+    <img src="~/images/Logo.png" />
+    <div class="box">
+        <h1>Vehicle Tracking Simulation</h1>
+
+        <label asp-for="UserName" class="control-label"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="answer" value="Login" class="btn btn-secondary" />
+        </div>
+        <div class="form-group">
+            <a href="@Url.Action("Register", "Account")" class="btn btn-secondary">
+                Register
+            </a>
+        </div>
+        <div class="row" style="text-align:center;padding-top:10px;">
+            <div class="col-md-3" style="color:red;">
+                <div class="form-group">
+                    @if (ViewBag.Status != null)
+                    {@ViewBag.Status}
+                </div>
+            </div>
+        </div>
+    </div> 
+</form>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model VehicleTrackingSystem.DataObjects.Domain.UserViewModel
+    @{
+        Layout = "";
+    }
+    <form asp-action="Login">
+        <div class="row" style="text-align:center;padding-top:200px;">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="text-align:center;padding-top:10px;">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="text-align:center;padding-top:10px;">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="submit" name="answer" value="Submit" class="btn btn-secondary" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="@Url.Action("Register", "Account")">
+                    Register
+                </a>
+            </div>
+        </div>
+        <div class="row" style="text-align:center;padding-top:10px;">
+            <div class="col-md-3">
+                <div class="form-group">
+                    @if (ViewBag.Status != null)
+                    {@ViewBag.Status}
+                </div>
+            </div>
+        </div>
+    </form>*@

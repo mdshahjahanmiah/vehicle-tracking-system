@@ -1,0 +1,28 @@
+﻿@model VehicleTrackingSystem.DataObjects.Domain.VehicleViewModel
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="@Model.Device.ImeiNumber" class="control-label"></label>
+            <input asp-for="@Model.Device.ImeiNumber" class="form-control" />
+            <span asp-validation-for="@Model.Device.ImeiNumber" class="text-danger"></span>
+        </div>
+       
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="@Model.Device.Status" class="control-label"></label>
+            <input asp-for="@Model.Device.Status" class="form-control" />
+            <span asp-validation-for="@Model.Device.Status" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="@Model.Device.Name" class="control-label"></label>
+            <input asp-for="@Model.Device.Name" class="form-control" />
+            <span asp-validation-for="@Model.Device.Name" class="text-danger"></span>
+        </div>
+    </div>
+    
+</div>
+
+

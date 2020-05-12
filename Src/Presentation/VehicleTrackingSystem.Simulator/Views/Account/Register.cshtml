@@ -1,0 +1,138 @@
+﻿@model VehicleTrackingSystem.DataObjects.Domain.UserViewModel
+@{
+    Layout = "";
+}
+<link href="~/css/Register.css" rel="stylesheet" />
+<div class="form_wrapper">
+    <div class="form_container" style="text-align:center;">
+        <img src="~/images/Register.jpg" />
+        <div class="title_container">
+            <h8>
+                Registration
+                @if (ViewBag.Status != null)
+                {
+                    @ViewBag.Status
+                }
+            </h8>
+        </div>
+        <div class="row clearfix">
+            <div class="">
+                <form asp-action="Register">
+                    <div class="input_field">
+                        <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                        <select asp-for="UserTypeId" asp-items="@(new SelectList(ViewBag.ListOfUserTypes,"UserTypeId","Name"))" style="width:300px;"></select>
+                    </div>
+                    <div class="input_field" style="padding-top:5px;">
+                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input asp-for="Name" class="form-control" placeholder="Name" style="width:300px;"/>
+                    </div>
+
+                    <div class="input_field" style="padding-top:5px;">
+                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input asp-for="Email" class="form-control" placeholder="Email" style="width:300px;"/>
+                    </div>
+                    <div class="input_field" style="padding-top:5px;">
+                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input asp-for="MobileNumber" class="form-control" placeholder="Mobile Number" style="width:300px;" />
+                    </div>
+                    <div class="input_field" style="padding-top:5px;">
+                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input asp-for="UserName" class="form-control" placeholder="User Name" style="width:300px;"/>
+                    </div>
+                    <div class="input_field" style="padding-top:5px;">
+                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input asp-for="Password" class="form-control" placeholder="Password" style="width:300px;"/>
+                    </div>
+                    <div style="padding-top:5px;">
+                        <input type="submit" name="answer" value="Submit" class="btn btn-secondary" />
+                        <a asp-action="Login">Back to Login</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<form asp-action="Register">
+        <h8>
+            Register User
+            @if (ViewBag.Status != null)
+            {
+                @ViewBag.Status
+            }
+        </h8>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="UserTypeId" class="control-label"></label>
+                    <input asp-for="UserTypeId" class="form-control" placeholder="Ex. 1 or 2" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MobileNumber" class="control-label"></label>
+                    <input asp-for="MobileNumber" class="form-control" />
+                    <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="submit" name="answer" value="Submit" class="btn btn-secondary" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <a asp-action="Login">Back to Login</a>
+    </div>*@
+

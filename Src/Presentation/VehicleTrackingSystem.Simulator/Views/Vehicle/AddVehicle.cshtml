@@ -1,0 +1,90 @@
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+@model VehicleTrackingSystem.DataObjects.Domain.VehicleViewModel
+@{
+    ViewData["Title"] = "AddVehicle";
+}
+<form asp-action="AddVehicle">
+    <h8>
+        Registration
+        @if (ViewBag.Status != null)
+        {
+            @ViewBag.Status
+        }
+    </h8>
+    <div class="row float-right">
+        <div class="form-group">
+            <input type="submit" name="answer" value="Submit" class="btn btn-secondary" />
+            <input type="submit" name="answer" value="Reset" class="btn btn-light" />
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <input class="collapsible" type="button" value="Vehicle Information">
+        <div class="content">
+            <partial name="Partial/_Vehicle.cshtml" for="@Model" />
+        </div>
+    </div>
+    <div class="row">
+        <input class="collapsible" type="button" value="Device Information">
+        <div class="content">
+            <partial name="Partial/_Device.cshtml" for="@Model" />
+        </div>
+    </div>
+
+    @if (ViewBag.ListOfVehicles != null)
+    {
+        <div class="row" style="padding-top : 10px;">
+            List Of Enrolled Vehicle with Device Information
+        </div>
+        <div class='row table-cont' id='table-cont'>
+            <table class="table table-striped scores">
+                <thead>
+                    <tr>
+                        <th>VehicleId</th>
+                        <th>Vehicle Name</th>
+                        <th>Maker</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>BodyType</th>
+                        <th>UserId</th>
+                        <th>DeviceId</th>
+                        <th>ImeiNumber</th>
+                        <th>Device Name</th>
+                        <th>Device Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var vehicle in ViewBag.ListOfVehicles)
+                    {
+                        <tr>
+                            <td>@vehicle.VehicleId</td>
+                            <td>@vehicle.Name</td>
+                            <td>@vehicle.Maker</td>
+                            <td>@vehicle.Model</td>
+                            <td>@vehicle.Year</td>
+                            <td>@vehicle.BodyType</td>
+                            <td>@vehicle.UserId</td>
+                            <td>@vehicle.Device.DeviceId</td>
+                            <td>@vehicle.Device.ImeiNumber</td>
+                            <td>@vehicle.Device.Name</td>
+                            <td>@vehicle.Device.Status</td>
+                            <td>
+                                <a href="@Url.Action("AddVehicle", "Vehicle", new { vehicleId = vehicle.VehicleId, name = vehicle.Name, maker = vehicle.Maker, model = vehicle.Model, year = vehicle.Year, bodyType = vehicle.BodyType,userId = vehicle.UserId, deviceId = vehicle.Device.DeviceId, imeiNumber = vehicle.Device.ImeiNumber,deviceName  = vehicle.Device.Name, status = vehicle.Device.Status})">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @Html.HiddenFor(model => model.VehicleId)
+    @Html.HiddenFor(model => model.Device.DeviceId)
+
+
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,123 @@
+﻿@model VehicleTrackingSystem.DataObjects.Domain.LocationViewModel
+
+<form asp-action="AddLocation">
+    <h8>
+        Record Position
+        @if (ViewBag.Status != null)
+        {
+            @ViewBag.Status
+        }
+    </h8>
+    <div class="row float-right">
+        <div class="form-group">
+            <input type="submit" name="answer" value="Submit" class="btn btn-secondary" />
+            <input type="submit" name="answer" value="Reset" class="btn btn-light" />
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.VehicleId" class="control-label"></label>
+                <select asp-for="@Model.VehicleId" asp-items="@(new SelectList(ViewBag.ListOfVehicles,"VehicleId","Name"))"></select>
+                <span asp-validation-for="@Model.VehicleId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.Latitude" class="control-label"></label>
+                <input asp-for="@Model.Latitude" class="form-control" />
+                <span asp-validation-for="@Model.Latitude" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.Longitude" class="control-label"></label>
+                <input asp-for="@Model.Longitude" class="form-control" />
+                <span asp-validation-for="@Model.Longitude" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.Speed" class="control-label"></label>
+                <input asp-for="@Model.Speed" class="form-control" />
+                <span asp-validation-for="@Model.Speed" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.Altitude" class="control-label"></label>
+                <input asp-for="@Model.Altitude" class="form-control" />
+                <span asp-validation-for="@Model.Altitude" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.HorizontalAccuracy" class="control-label"></label>
+                <input asp-for="@Model.HorizontalAccuracy" class="form-control" />
+                <span asp-validation-for="@Model.HorizontalAccuracy" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="@Model.VerticalAccuracy" class="control-label"></label>
+                <input asp-for="@Model.VerticalAccuracy" class="form-control" />
+                <span asp-validation-for="@Model.VerticalAccuracy" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    @if (ViewBag.listOfLocations != null)
+    {
+        <div class="row" style="padding-top : 30px;">
+            List Of Location Information
+        </div>
+        <div class='row table-cont' id='table-cont'>
+            <table class="table table-striped scores">
+                <thead>
+                    <tr>
+                        <th>LocationId</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Altitude</th>
+                        <th>HorizontalAccuracy</th>
+                        <th>VerticalAccuracy</th>
+                        <th>Speed</th>
+                        <th>CreatedTime</th>
+                        <th>VehicleId</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var location in ViewBag.listOfLocations)
+                    {
+                        <tr>
+                            <td>@location.LocationId</td>
+                            <td>@location.Latitude</td>
+                            <td>@location.Longitude</td>
+                            <td>@location.Altitude</td>
+                            <td>@location.HorizontalAccuracy</td>
+                            <td>@location.VerticalAccuracy</td>
+                            <td>@location.Speed</td>
+                            <td>@location.CreatedTime</td>
+                            <td>@location.VehicleId</td>
+                            <td>
+                                <a href="@Url.Action("AddLocation", "Location", new { locationId = location.LocationId, latitude = location.Latitude, longitude = location.Longitude, altitude = location.Altitude, horizontalAccuracy = location.HorizontalAccuracy, verticalAccuracy = location.VerticalAccuracy,speed = location.Speed, createdTime = location.CreatedTime, VehicleId = location.VehicleId})">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    @Html.HiddenFor(model => model.LocationId)
+</form>
+
+
